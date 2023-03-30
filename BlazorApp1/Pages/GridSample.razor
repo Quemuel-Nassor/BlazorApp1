@@ -1,0 +1,84 @@
+@using Blazorise.DataGrid
+@using BlazorApp1.Extensions;
+@inherits DataGridBase;
+@page "/gridsample"
+
+<PageTitle>Grid Sample</PageTitle>
+
+<h1>Grid Sample</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+<DataGrid TItem="Sample" 
+          Data="@Items" 
+          PageSize="5" 
+          CurrentPage="1"
+          ReadData="@OnReadData"
+          TotalItems="10"
+          ShowPager
+          Responsive>
+    
+    <DataGridCommandColumn />
+    <DataGridColumn Field="@nameof(Sample.Id)" Caption="Id"></DataGridColumn>
+    <DataGridColumn Field="@nameof(Sample.Name)" Caption="Name"></DataGridColumn>
+    <DataGridColumn Field="@nameof(Sample.Date)" Caption="Date"></DataGridColumn>
+    <DataGridColumn Field="@nameof(Sample.Action)" Caption="Action"></DataGridColumn>
+</DataGrid>
+
+@code {
+
+    @* protected override void OnParametersSet()
+    {
+        var page = GridCurrentPage;
+    } *@
+
+    @* protected override void OnInitialized()
+    {
+        OnReadDataAction += Request;
+    } *@
+
+    private List<Sample> Items { get; set; } = new(){
+            new Sample(){
+                Id = 1,
+                Name = "João",
+                Date = DateTime.Now
+            },new Sample(){
+                Id = 2,
+                Name = "Maria",
+                Date = DateTime.Now.AddHours(1)
+            },new Sample(){
+                Id = 3,
+                Name = "Antonio",
+                Date = DateTime.Now.AddHours(2)
+            },new Sample(){
+                Id = 4,
+                Name = "Zezinho",
+                Date = DateTime.Now.AddHours(3)
+            },new Sample(){
+                Id = 5,
+                Name = "Julieta",
+                Date = DateTime.Now.AddHours(4)
+            },new Sample(){
+                Id = 6,
+                Name = "Ofelia",
+                Date = DateTime.Now.AddHours(5)
+            },
+        };
+
+    @* public async Task OnReadData(DataGridReadDataEventArgs<Sample> e)
+    {
+        await Task.Delay(1000);
+    } *@
+
+    public async Task Request(object param)
+    {
+        await Task.CompletedTask;
+    }
+
+    public class Sample{
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public DateTime Date { get; set; }
+        public int Action { get; set; }
+    }
+}

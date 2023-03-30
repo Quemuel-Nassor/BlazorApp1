@@ -1,0 +1,13 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Blazor WebAssembly",
+            "type": "blazorwasm",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/BlazorApp1",
+            "browser": "edge",
+            "url": "http://localhost:5146"
+        }
+    ]
+}
