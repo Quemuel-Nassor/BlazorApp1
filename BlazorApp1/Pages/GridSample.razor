@@ -9,9 +9,10 @@
 
 <p>This component demonstrates fetching data from the server.</p>
 
-<Button Clicked="Request"></Button>
+<Button Clicked="Request">Get Items</Button>
 
 <DataGrid TItem="Sample"
+          @ref="dataGridRef"
           Data="@Items"
           PageSize="3"
           CurrentPage="@GridCurrentPage"
@@ -20,19 +21,28 @@
           ShowPager
           Responsive>
 
-    <DataGridCommandColumn />
-    <DataGridColumn Field="@nameof(Sample.Id)" Caption="Id"></DataGridColumn>
-    <DataGridColumn Field="@nameof(Sample.Name)" Caption="Name"></DataGridColumn>
-    <DataGridColumn Field="@nameof(Sample.Date)" Caption="Date"></DataGridColumn>
-    <DataGridColumn Field="@nameof(Sample.Action)" Caption="Action"></DataGridColumn>
+    <DataGridColumns>
+        <DataGridCommandColumn />
+        <DataGridColumn Field="@nameof(Sample.Id)" Caption="Id"></DataGridColumn>
+        <DataGridColumn Field="@nameof(Sample.Name)" Caption="Name"></DataGridColumn>
+        <DataGridColumn Field="@nameof(Sample.Date)" Caption="Date"></DataGridColumn>
+        <DataGridColumn Field="@nameof(Sample.Action)" Caption="Action"></DataGridColumn>
+    </DataGridColumns>
+    <LoadingTemplate>
+        <div class="spinner-border" role="status">
+            Loading 
+            <span class="sr-only">Loading...</span>
+        </div>
+    </LoadingTemplate>
 </DataGrid>
 
 @code {
     int Page;
     string Sorting;
     int skipCount;
+    DataGrid<Sample> dataGridRef;
 
-    protected override void OnParametersSet()
+    @* protected override void OnParametersSet()
     {
         Console.WriteLine($"sorting: event=({Sorting}) - ({GridSorting})");
         Console.WriteLine($"page: event=({Page}) - ({GridCurrentPage})");
@@ -41,12 +51,16 @@
         Sorting = GridSorting;
 
 
-    }
+    } *@
 
     protected override void OnInitialized()
     {
         OnReadDataAction += async () => await Request();
-        //Request();
+        Page = GridCurrentPage;
+        Sorting = GridSorting;
+        @* InitGrid = false; *@
+        @* Request(); *@
+        @* InitGrid = true; *@
     }
 
     private List<Sample> Items { get; set; } = new();
@@ -78,17 +92,22 @@
             },
         };
 
-    @* public async Task OnReadData(DataGridReadDataEventArgs<Sample> e)
-    {
-        await Task.Delay(1000);
-    } *@
-
     public async Task Request()
     {
+
+        @* Console.WriteLine($"sorting: event=({Sorting}) - ({GridSorting})"); *@
+        Console.WriteLine($"page: event=({Page}) - ({GridCurrentPage})");
+
+        Page = GridCurrentPage;
+        @* Sorting = GridSorting; *@
+
+
+        @* await dataGridRef.Reload(); *@
+        await dataGridRef.Refresh();
         Console.WriteLine($"Requisitou dados na API - {Items.Count}");
-        await Task.Delay(300);
-        Items = ItemsSrc.Skip(skipCount).Take(3).ToList();
-        skipCount = skipCount < ItemsSrc.Count ? skipCount + 3 : 0;
+        await Task.Delay(500);
+        Items = ItemsSrc.Skip((Page-1) * 3).Take(3).ToList();
+        @* skipCount = skipCount < ItemsSrc.Count ? skipCount + 3 : 0; *@
         Console.WriteLine($"Concluiu requisição - {Items.Count}");
     }
 
