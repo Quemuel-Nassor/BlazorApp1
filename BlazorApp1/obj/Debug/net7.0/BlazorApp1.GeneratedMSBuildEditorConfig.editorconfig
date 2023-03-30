@@ -9,45 +9,45 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = browser
 build_property.RootNamespace = BlazorApp1
 build_property.RootNamespace = BlazorApp1
-build_property.ProjectDir = D:\Quemuel\BlazorApp1\BlazorApp1\
+build_property.ProjectDir = d:\Quemuel\BlazorApp1\BlazorApp1\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\Quemuel\BlazorApp1\BlazorApp1
+build_property.MSBuildProjectDirectory = d:\Quemuel\BlazorApp1\BlazorApp1
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/Quemuel/BlazorApp1/BlazorApp1/App.razor]
+[d:/Quemuel/BlazorApp1/BlazorApp1/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Quemuel/BlazorApp1/BlazorApp1/Pages/Counter.razor]
+[d:/Quemuel/BlazorApp1/BlazorApp1/Pages/Counter.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Quemuel/BlazorApp1/BlazorApp1/Pages/FetchData.razor]
+[d:/Quemuel/BlazorApp1/BlazorApp1/Pages/FetchData.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmV0Y2hEYXRhLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Quemuel/BlazorApp1/BlazorApp1/Pages/GridSample.razor]
+[d:/Quemuel/BlazorApp1/BlazorApp1/Pages/GridSample.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JpZFNhbXBsZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Quemuel/BlazorApp1/BlazorApp1/Pages/Index.razor]
+[d:/Quemuel/BlazorApp1/BlazorApp1/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Quemuel/BlazorApp1/BlazorApp1/Shared/SurveyPrompt.razor]
+[d:/Quemuel/BlazorApp1/BlazorApp1/Shared/SurveyPrompt.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Quemuel/BlazorApp1/BlazorApp1/_Imports.razor]
+[d:/Quemuel/BlazorApp1/BlazorApp1/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Quemuel/BlazorApp1/BlazorApp1/Shared/MainLayout.razor]
+[d:/Quemuel/BlazorApp1/BlazorApp1/Shared/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-45rkf8v3vv
 
-[D:/Quemuel/BlazorApp1/BlazorApp1/Shared/NavMenu.razor]
+[d:/Quemuel/BlazorApp1/BlazorApp1/Shared/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-b5wscdn8ts
