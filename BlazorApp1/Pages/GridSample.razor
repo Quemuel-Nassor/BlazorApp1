@@ -1,6 +1,6 @@
 @using Blazorise.DataGrid
-@using BlazorApp1.Extensions;
-@inherits DataGridBase;
+@using BlazorApp1.Extensions
+@inherits DataGridBase
 @page "/gridsample"
 
 <PageTitle>Grid Sample</PageTitle>
@@ -9,15 +9,17 @@
 
 <p>This component demonstrates fetching data from the server.</p>
 
-<DataGrid TItem="Sample" 
-          Data="@Items" 
-          PageSize="5" 
-          CurrentPage="1"
+<Button Clicked="Request"></Button>
+
+<DataGrid TItem="Sample"
+          Data="@Items"
+          PageSize="3"
+          CurrentPage="@GridCurrentPage"
           ReadData="@OnReadData"
-          TotalItems="10"
+          TotalItems="@ItemsSrc.Count"
           ShowPager
           Responsive>
-    
+
     <DataGridCommandColumn />
     <DataGridColumn Field="@nameof(Sample.Id)" Caption="Id"></DataGridColumn>
     <DataGridColumn Field="@nameof(Sample.Name)" Caption="Name"></DataGridColumn>
@@ -26,18 +28,29 @@
 </DataGrid>
 
 @code {
+    int Page;
+    string Sorting;
+    int skipCount;
 
-    @* protected override void OnParametersSet()
+    protected override void OnParametersSet()
     {
-        var page = GridCurrentPage;
-    } *@
+        Console.WriteLine($"sorting: event=({Sorting}) - ({GridSorting})");
+        Console.WriteLine($"page: event=({Page}) - ({GridCurrentPage})");
 
-    @* protected override void OnInitialized()
+        Page = GridCurrentPage;
+        Sorting = GridSorting;
+
+
+    }
+
+    protected override void OnInitialized()
     {
-        OnReadDataAction += Request;
-    } *@
+        OnReadDataAction += async () => await Request();
+        //Request();
+    }
 
-    private List<Sample> Items { get; set; } = new(){
+    private List<Sample> Items { get; set; } = new();
+    private List<Sample> ItemsSrc { get; set; } = new(){
             new Sample(){
                 Id = 1,
                 Name = "João",
@@ -70,12 +83,17 @@
         await Task.Delay(1000);
     } *@
 
-    public async Task Request(object param)
+    public async Task Request()
     {
-        await Task.CompletedTask;
+        Console.WriteLine($"Requisitou dados na API - {Items.Count}");
+        await Task.Delay(300);
+        Items = ItemsSrc.Skip(skipCount).Take(3).ToList();
+        skipCount = skipCount < ItemsSrc.Count ? skipCount + 3 : 0;
+        Console.WriteLine($"Concluiu requisição - {Items.Count}");
     }
 
-    public class Sample{
+    public class Sample
+    {
         public int Id { get; set; }
         public string Name { get; set; }
         public DateTime Date { get; set; }

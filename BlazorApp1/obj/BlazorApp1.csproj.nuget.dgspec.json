@@ -1,25 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "/mnt/DATA/projects/BlazorApp1/BlazorApp1/BlazorApp1.csproj": {}
+    "D:\\Quemuel\\BlazorApp1\\BlazorApp1\\BlazorApp1.csproj": {}
   },
   "projects": {
-    "/mnt/DATA/projects/BlazorApp1/BlazorApp1/BlazorApp1.csproj": {
+    "D:\\Quemuel\\BlazorApp1\\BlazorApp1\\BlazorApp1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/mnt/DATA/projects/BlazorApp1/BlazorApp1/BlazorApp1.csproj",
+        "projectUniqueName": "D:\\Quemuel\\BlazorApp1\\BlazorApp1\\BlazorApp1.csproj",
         "projectName": "BlazorApp1",
-        "projectPath": "/mnt/DATA/projects/BlazorApp1/BlazorApp1/BlazorApp1.csproj",
-        "packagesPath": "/home/quemuel/.nuget/packages/",
-        "outputPath": "/mnt/DATA/projects/BlazorApp1/BlazorApp1/obj/",
+        "projectPath": "D:\\Quemuel\\BlazorApp1\\BlazorApp1\\BlazorApp1.csproj",
+        "packagesPath": "C:\\Users\\Quemuel-NS\\.nuget\\packages\\",
+        "outputPath": "D:\\Quemuel\\BlazorApp1\\BlazorApp1\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "/home/quemuel/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Quemuel-NS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -75,22 +82,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[7.0.2, 7.0.2]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Runtime.Mono.browser-wasm",
-              "version": "[7.0.2, 7.0.2]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/7.0.102/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {

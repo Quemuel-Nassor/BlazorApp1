@@ -1,47 +1,50 @@
 using Blazorise.DataGrid;
 using SortDirection = Blazorise.SortDirection;
 
-namespace BlazorApp1.Extensions;
-
-public static class DataGridEventExtension
+namespace BlazorApp1.Extensions
 {
-    public static string GetGridSorting(this IEnumerable<DataGridColumnInfo> columns)
+
+
+    public static class DataGridEventExtension
     {
-        string direction = string.Empty;
-        DataGridColumnInfo? columnInfo = columns.FirstOrDefault(x => x.SortDirection != SortDirection.Default);
-
-        if (columnInfo == null)
-            return string.Empty;
-
-        switch (columnInfo.SortDirection)
+        public static string GetGridSorting(this IEnumerable<DataGridColumnInfo> columns)
         {
-            case SortDirection.Ascending:
-                direction = " asc";
-                break;
-            case SortDirection.Descending:
-                direction = " desc";
-                break;
-            default:
-                break;
-        }
+            string direction = string.Empty;
+            DataGridColumnInfo? columnInfo = columns.FirstOrDefault(x => x.SortDirection != SortDirection.Default);
 
-        return columnInfo.SortField + direction;
-    }
+            if (columnInfo == null)
+                return string.Empty;
 
-    public static async Task<Tout> OnReadData<T,Tout,Tin>(this DataGridReadDataEventArgs<T> e, Tin parameters, Func<Tin, Task<Tout>> request) where Tout : new()
-    {
-        if (!e.CancellationToken.IsCancellationRequested)
-        {
-            string sorting = e.Columns.GetGridSorting();
-
-            if (((dynamic)parameters).PageNumber != e.Page || !((dynamic)parameters).Sorting.Equals(sorting))
+            switch (columnInfo.SortDirection)
             {
-                ((dynamic)parameters).Sorting = sorting;
-                ((dynamic)parameters).PageNumber = e.Page;
-                return await request(parameters);
+                case SortDirection.Ascending:
+                    direction = " asc";
+                    break;
+                case SortDirection.Descending:
+                    direction = " desc";
+                    break;
+                default:
+                    break;
             }
+
+            return columnInfo.SortField + direction;
         }
 
-        return new Tout();
+        public static async Task<Tout> OnReadData<T, Tout, Tin>(this DataGridReadDataEventArgs<T> e, Tin parameters, Func<Tin, Task<Tout>> request) where Tout : new()
+        {
+            if (!e.CancellationToken.IsCancellationRequested)
+            {
+                string sorting = e.Columns.GetGridSorting();
+
+                if (((dynamic)parameters).PageNumber != e.Page || !((dynamic)parameters).Sorting.Equals(sorting))
+                {
+                    ((dynamic)parameters).Sorting = sorting;
+                    ((dynamic)parameters).PageNumber = e.Page;
+                    return await request(parameters);
+                }
+            }
+
+            return new Tout();
+        }
     }
 }
