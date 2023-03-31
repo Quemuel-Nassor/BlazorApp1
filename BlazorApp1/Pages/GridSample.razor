@@ -60,7 +60,6 @@
         OnReadDataAction += async () =>
         {
             await Request();
-            StateHasChanged();
         };
     }
 
@@ -74,5 +73,6 @@
         var result = await service.GetPaged(PageNumber, PageSize, Sorting);
         Items = result.items;
         TotalItems = result.total;
+        StateHasChanged();
     }
 }
