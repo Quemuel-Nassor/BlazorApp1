@@ -7,8 +7,9 @@ namespace BlazorApp1.Extensions
     {
         [Parameter]
         public bool InitGrid { get; set; } = true;
-        public int GridCurrentPage { get; set; } = 1;
-        public string GridSorting { get; set; } = "CreationTime Desc";
+        public int GridPageNumber { get; set; }
+        public int GridPageSize { get; set; }
+        public string GridSorting { get; set; }
 
         public event Action OnReadDataAction;
 
@@ -18,14 +19,11 @@ namespace BlazorApp1.Extensions
             {
                 string sorting = e.Columns.GetGridSorting();
 
-                Console.WriteLine($"initGrid: {InitGrid}");
-                Console.WriteLine($"sorting: event=({sorting}) - ({GridSorting})");
-                Console.WriteLine($"page: event=({e.Page}) - ({GridCurrentPage})");
-
-                if (InitGrid && (GridCurrentPage != e.Page || !GridSorting.Equals(sorting)))
+                if (InitGrid && (GridPageNumber != e.Page || GridSorting != sorting || GridPageSize != e.PageSize))
                 {
                     GridSorting = sorting;
-                    GridCurrentPage = e.Page;
+                    GridPageSize = e.PageSize;
+                    GridPageNumber = e.Page;
                     OnReadDataAction?.Invoke();
                 }
             }
