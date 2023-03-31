@@ -19,7 +19,10 @@ namespace BlazorApp1.Extensions
             {
                 string sorting = e.Columns.GetGridSorting();
 
-                if (InitGrid && (GridPageNumber != e.Page || GridSorting != sorting || GridPageSize != e.PageSize))
+                if (InitGrid && 
+                    (GridPageNumber != e.Page || 
+                     GridSorting != sorting || 
+                     GridPageSize != e.PageSize))
                 {
                     GridSorting = sorting;
                     GridPageSize = e.PageSize;
